@@ -1,0 +1,21 @@
+#root {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.theme-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+  border: 1px solid var(--font-color);
+  border-radius: 10px;
+  transition: var(--default-transition);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  align-items: flex-end;
+}

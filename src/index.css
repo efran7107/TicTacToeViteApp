@@ -1,0 +1,74 @@
+:root {
+  --default-font: "Roboto Condensed", sans-serif;
+  font-family: var(--default-font);
+  --background: #172cb2;
+  --x-font-color: #e6331e;
+  --x-background-color: #2277e6;
+  --o-font-color: #2277e6;
+  --o-background-color: #e6331e;
+
+  --font-color: #131313ce;
+  --win-background: #bfe61e;
+
+  --font-size-10: 0.625rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-22: 1.375rem;
+  --font-size-24: 1.5rem;
+  --font-size-26: 1.625rem;
+  --font-size-28: 1.75rem;
+  --font-size-30: 1.875rem;
+  --font-size-40: 2.5rem;
+  --font-size-50: 3.125rem;
+  --font-size-60: 3.75rem;
+  --font-size-70: 4.25rem;
+  --font-size-80: 5rem;
+  --font-size-90: 5.5rem;
+
+  --default-transition: all 0.2s ease-in-out;
+}
+
+.dark {
+  --background: #273361;
+  --x-font-color: #914b43;
+  --x-background-color: #405166;
+  --o-font-color: #405166;
+  --o-background-color: #914b43;
+
+  --font-color: #bdbcbcda;
+  --win-background: #5f6640;
+  transition: var(--default-transition);
+}
+
+body {
+  color: var(--font-color);
+  background: var(--background);
+  margin: 0;
+  transition: var(--default-transition);
+}
+
+h1 {
+  margin: 0;
+}
+
+input {
+  font-size: var(--font-size-20);
+  background-color: var(--background);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  font-family: var(--default-font);
+  font-size: var(--font-size-20);
+  color: var(--font-color);
+}
+
+label {
+  font-size: var(--font-size-16);
+}

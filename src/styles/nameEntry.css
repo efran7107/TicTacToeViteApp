@@ -1,0 +1,16 @@
+.name-entry-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.name-entry-cont button {
+  font-size: var(--font-size-18);
+  color: var(--font-color);
+  background-color: var(--background);
+  border: 1px solid var(--font-color);
+  padding: 10px;
+  border-radius: 10px;
+}
