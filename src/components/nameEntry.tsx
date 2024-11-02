@@ -4,7 +4,16 @@ import "../styles/nameEntry.css";
 export const NameEntry = () => {
   const { name, setName, setDidEnterName } = useUser();
   return (
-    <div className="name-entry-cont">
+    <form
+      className="name-entry-cont"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (name.trim().length < 2) {
+          return;
+        }
+        setDidEnterName(true);
+      }}
+    >
       <label htmlFor="name">Please enter a name to begin the game</label>
       <input
         type="text"
@@ -14,16 +23,7 @@ export const NameEntry = () => {
         onChange={(e) => setName(e.currentTarget.value)}
         placeholder="Your name here..."
       />
-      <button
-        onClick={() => {
-          if (name.trim().length < 2) {
-            return;
-          }
-          setDidEnterName(true);
-        }}
-      >
-        Enter
-      </button>
-    </div>
+      <input type="submit" value="Enter" />
+    </form>
   );
 };

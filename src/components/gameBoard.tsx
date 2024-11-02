@@ -1,3 +1,3 @@
 export const GameBoard = () => {
-  return <> </>;
+  return <div className="gameboard"></div>;
 };
