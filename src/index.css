@@ -1,13 +1,14 @@
 :root {
   --default-font: "Roboto Condensed", sans-serif;
   font-family: var(--default-font);
-  --background: #172cb2;
+
+  --background: #f1f1f1;
   --x-font-color: #e6331e;
   --x-background-color: #2277e6;
   --o-font-color: #2277e6;
   --o-background-color: #e6331e;
 
-  --font-color: #131313ce;
+  --font-color: #161616d8;
   --win-background: #bfe61e;
 
   --font-size-10: 0.625rem;
@@ -32,13 +33,13 @@
 }
 
 .dark {
-  --background: #273361;
+  --background: #1f1f1f;
   --x-font-color: #914b43;
   --x-background-color: #405166;
   --o-font-color: #405166;
   --o-background-color: #914b43;
 
-  --font-color: #bdbcbcda;
+  --font-color: #f3f3f3da;
   --win-background: #5f6640;
   transition: var(--default-transition);
 }
@@ -46,6 +47,7 @@
 body {
   color: var(--font-color);
   background: var(--background);
+  height: 100vh;
   margin: 0;
   transition: var(--default-transition);
 }
@@ -58,15 +60,17 @@ input {
   font-size: var(--font-size-20);
   background-color: var(--background);
   color: var(--font-color);
-  border: 1px solid var(--font-color);
+  border: 2px solid var(--font-color);
   padding: 10px;
   border-radius: 10px;
+  transition: var(--default-transition);
 }
 
 input::placeholder {
   font-family: var(--default-font);
   font-size: var(--font-size-20);
   color: var(--font-color);
+  transition: var(--default-transition);
 }
 
 label {
