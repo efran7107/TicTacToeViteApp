@@ -46,7 +46,7 @@ const validateWin = (playedTiles: number[]): boolean => {
   }
 };
 
-const winningCombinations = (gameboard: Array<gameTile>) => {
+const winningCombinations = (gameboard: Array<gameTile>): Array<gameTile[]> => {
   return [
     gameboard.filter((tile) => tile.id === 0 || tile.id === 1 || tile.id === 2),
     gameboard.filter((tile) => tile.id === 3 || tile.id === 4 || tile.id === 5),
@@ -63,4 +63,5 @@ export const functions = {
   getGameBoard,
   changeGameboardArr,
   validateWin,
+  winningCombinations,
 };
