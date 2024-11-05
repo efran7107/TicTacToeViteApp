@@ -17,7 +17,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     if (gameboard[id].owner !== "") {
       return;
     }
-    const userTile = gameboard[id].id;
     const updatedGameboard = functions.changeGameboardArr(
       gameboard,
       x,
@@ -25,13 +24,45 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       id,
       numTurns
     );
+    if (lastThreeX.length === 3) {
+      const newLastThreeX = [...lastThreeX, id].slice(-3);
+      if (functions.validateWin(newLastThreeX)) {
+        return;
+      }
+      setLastThreeX(newLastThreeX);
+    } else {
+      if (lastThreeX.length === 2) {
+        const newLastThreeX = [...lastThreeX, id];
+        if (functions.validateWin(newLastThreeX)) {
+          return;
+        }
+      }
+      setLastThreeX([...lastThreeX, id]);
+    }
+
     const availableTiles = updatedGameboard.filter((tile) => tile.owner === "");
     let cpuChoice: number;
-    const afterXTurn = numTurns + 1;
-    const updatedLastThreeX =
-      lastThreeX.length === 3
-        ? [...lastThreeX, id].slice(-3)
-        : [...lastThreeX, id];
+
+    if (numTurns + 1 < 4) {
+      if (availableTiles.filter((tile) => tile.id === 4).length > 0) {
+        cpuChoice = 4;
+      } else {
+        cpuChoice =
+          availableTiles[Math.floor(Math.random() * availableTiles.length)].id;
+      }
+      setLastThreeO([...lastThreeO, cpuChoice]);
+      setGameboard(
+        functions.changeGameboardArr(
+          updatedGameboard,
+          x,
+          o,
+          cpuChoice,
+          numTurns + 1
+        )
+      );
+      setNumTurns(numTurns + 2);
+      return;
+    }
   };
 
   return (

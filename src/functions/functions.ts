@@ -5,7 +5,6 @@ const getGameBoard = (): Array<gameTile> => {
   for (let i = 0; i < 9; i++) {
     tiles.push({
       id: i,
-      value: i,
       owner: "",
     });
   }
@@ -18,7 +17,7 @@ const changeGameboardArr = (
   o: string,
   id: number,
   turns: number
-) => {
+): gameTile[] => {
   return gameboard.map((tile) => {
     if (tile.id === id) {
       return { ...tile, owner: turns % 2 === 0 ? x : o };
@@ -28,7 +27,40 @@ const changeGameboardArr = (
   });
 };
 
+const validateWin = (playedTiles: number[]): boolean => {
+  const sortedTiles = playedTiles.sort((a, b) => a - b);
+  const [a, b, c] = sortedTiles;
+  if (
+    (a === 0 && b === 1 && c === 2) ||
+    (a === 3 && b === 4 && c === 5) ||
+    (a === 6 && b === 7 && c === 8) ||
+    (a === 0 && b === 3 && c === 6) ||
+    (a === 1 && b === 4 && c === 7) ||
+    (a === 2 && b === 5 && c === 8) ||
+    (a === 0 && b === 4 && c === 8) ||
+    (a === 2 && b === 4 && c === 6)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const winningCombinations = (gameboard: Array<gameTile>) => {
+  return [
+    gameboard.filter((tile) => tile.id === 0 || tile.id === 1 || tile.id === 2),
+    gameboard.filter((tile) => tile.id === 3 || tile.id === 4 || tile.id === 5),
+    gameboard.filter((tile) => tile.id === 6 || tile.id === 7 || tile.id === 8),
+    gameboard.filter((tile) => tile.id === 0 || tile.id === 3 || tile.id === 6),
+    gameboard.filter((tile) => tile.id === 1 || tile.id === 4 || tile.id === 7),
+    gameboard.filter((tile) => tile.id === 2 || tile.id === 5 || tile.id === 8),
+    gameboard.filter((tile) => tile.id === 0 || tile.id === 4 || tile.id === 8),
+    gameboard.filter((tile) => tile.id === 2 || tile.id === 4 || tile.id === 6),
+  ];
+};
+
 export const functions = {
   getGameBoard,
   changeGameboardArr,
+  validateWin,
 };
