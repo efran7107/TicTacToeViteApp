@@ -16,11 +16,24 @@ const changeGameboardArr = (
   x: string,
   o: string,
   id: number,
-  turns: number
+  turns: number,
+  eliminatedId: number
 ): gameTile[] => {
+  if (turns < 8) {
+    return gameboard.map((tile) => {
+      if (tile.id === id) {
+        return { ...tile, owner: turns % 2 === 0 ? x : o };
+      } else {
+        return tile;
+      }
+    });
+  }
+
   return gameboard.map((tile) => {
     if (tile.id === id) {
       return { ...tile, owner: turns % 2 === 0 ? x : o };
+    } else if (tile.id === eliminatedId) {
+      return { ...tile, owner: "" };
     } else {
       return tile;
     }
