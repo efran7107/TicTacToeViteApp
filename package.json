@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sync-app": "npm run build; npx cap sync",
+    "sync-app": "npx cap sync",
     "android": "npx cap open android"
   },
   "dependencies": {
