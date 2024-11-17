@@ -3,7 +3,7 @@ import { useUser } from "../functions/providerContext";
 import "../styles/gameboard.css";
 
 export const GameBoard = () => {
-  const { name, gameboard, changeTile, x, o, xWins, oWins, isGameOver } = useUser();
+  const { name, gameboard, changeTile, x, o, xWins, oWins, isGameOver, restart } = useUser();
   return (
     <div className="gameboard-container">
       <div className="names-container">
@@ -40,6 +40,11 @@ export const GameBoard = () => {
           <h5><span>{o}</span> wins</h5>
           <p>{oWins}</p></div>
       </div>
+      {isGameOver && (
+        <div className="restart">
+          <input type="button" value={"\uf0e2"} onClick={() => restart()} />
+        </div>
+      )}
     </div>
   );
 };

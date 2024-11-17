@@ -66,3 +66,9 @@
 .wins p {
   font-size: var(--font-size-18);
 }
+
+
+.restart input {
+  font-weight: 600;
+  font-family: "Font Awesome 6 Free";
+}

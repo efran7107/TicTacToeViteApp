@@ -83,6 +83,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setNumTurns(numTurns + 2);
   };
 
+  const restart = () => {
+    setGameboard(functions.getGameBoard());
+    setLastThreeX([]);
+    setLastThreeO([]);
+    setNumTurns(2);
+    setIsGameOver(false);
+  }
+
   return (
     <UserProviderContext.Provider
       value={{
@@ -97,7 +105,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         o,
         isGameOver,
         xWins,
-        oWins
+        oWins,
+        restart
       }}
     >
       {children}

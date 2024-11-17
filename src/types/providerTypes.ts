@@ -12,5 +12,6 @@ export type TUserProvider = {
   o: string;
   isGameOver: boolean,
   xWins: number,
-  oWins: number
+  oWins: number,
+  restart: () => void 
 };
