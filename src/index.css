@@ -47,7 +47,7 @@ body {
   transition: var(--default-transition);
 }
 
-h1 {
+h1,.wins h5 {
   margin: 0;
 }
 
@@ -71,4 +71,9 @@ input::placeholder {
 
 label {
   font-size: var(--font-size-16);
+}
+
+.container {
+  width: fit-content;
+  margin: 0 auto ;
 }

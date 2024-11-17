@@ -11,6 +11,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [lastThreeX, setLastThreeX] = useState<number[]>([]);
   const [numTurns, setNumTurns] = useState(2);
 
+  const [isGameOver, setIsGameOver] = useState(false)
+
+  const [xWins, setXWins] = useState(0)
+  const [oWins, setOWins] = useState(0)
+
   const { setXTile, setOTile, cpuChoice } = gameLogic;
 
   const x = "\uf00d";
@@ -38,6 +43,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     if(lastThreeX.length > 1) {
       if (functions.validateWin([...lastThreeX, id].slice(-3))) {
         setGameboard(updatedGameboard)
+        setXWins(xWins + 1)
+        setIsGameOver(true)
+        functions.setWinningBtns([...lastThreeX, id].slice(-3))
         return
       }
     }
@@ -58,6 +66,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     if(lastThreeO.length > 1) {
       if (functions.validateWin([...lastThreeO, cpuId].slice(-3))) {
+        setOWins(oWins + 1)
+        setIsGameOver(true)
+        functions.setWinningBtns([...lastThreeO, cpuId].slice(-3))
         return
       }
     }
@@ -75,7 +86,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setGameboard,
         changeTile,
         x,
-        o
+        o,
+        isGameOver,
+        xWins,
+        oWins
       }}
     >
       {children}

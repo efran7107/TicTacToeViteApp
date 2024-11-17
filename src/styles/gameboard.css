@@ -40,3 +40,29 @@
   color: var(--o-font-color);
   background-color: var(--o-background-color);
 }
+
+.gameboard .winning-btn {
+  background-color:var(--font-color);
+  color: var(--background-color);
+  border-color: var(--background-color)
+}
+
+.wins-container {
+  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.wins h5 {
+  font-weight: 700;
+  font-size: var(--font-size-22);
+}
+
+.wins h5 span{
+  font-family: "Font Awesome 6 Free";
+}
+
+.wins p {
+  font-size: var(--font-size-18);
+}

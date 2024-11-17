@@ -81,10 +81,17 @@ const buttonClass = (tileOwner: string, x: string, o: string): string => {
   return ''
 }
 
+const setWinningBtns = (winningCombo: number[]) => {
+  winningCombo
+    .sort((a, b) => a - b)
+    .forEach(number => document.getElementById(number.toString())!.classList.add('winning-btn'))
+}
+
 export const functions = {
   getGameBoard,
   changeGameboardArr,
   validateWin,
   winningCombinations,
-  buttonClass
+  buttonClass,
+  setWinningBtns
 };
