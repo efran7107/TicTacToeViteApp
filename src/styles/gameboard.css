@@ -1,0 +1,42 @@
+.gameboard-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.names-container {
+  display: flex;
+  gap: 50px;
+}
+
+.names-container div {
+  text-align: center;
+}
+
+.gameboard {
+  width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gameboard input {
+  width: 60px;
+  height: 60px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 600;
+}
+
+.gameboard .x-owner {
+  border-color: var(--x-font-color);
+  color: var(--x-font-color);
+  background-color: var(--x-background-color);
+}
+
+.gameboard .o-owner {
+  border-color: var(--o-font-color);
+  color: var(--o-font-color);
+  background-color: var(--o-background-color);
+}
