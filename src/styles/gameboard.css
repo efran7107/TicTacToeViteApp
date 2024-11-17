@@ -43,8 +43,8 @@
 
 .gameboard .winning-btn {
   background-color:var(--font-color);
-  color: var(--background-color);
-  border-color: var(--background-color)
+  color: var(--background);
+  border-color: var(--background)
 }
 
 .wins-container {

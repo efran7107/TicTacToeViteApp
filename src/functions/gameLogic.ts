@@ -63,7 +63,7 @@ const cpuChoice = (
   if (
     winningOCombinations.length > 0
   ) {
-    return winningXCombinations[0]
+    return winningOCombinations[0]
       .filter((tile) => tile.owner === "")[0].id;
   }
 

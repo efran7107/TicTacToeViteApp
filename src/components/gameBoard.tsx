@@ -20,7 +20,7 @@ export const GameBoard = () => {
         {gameboard.map((tile) => {
           return (
             <input
-            className={functions.buttonClass(tile.owner, x, o)}
+            className={`${functions.buttonClass(tile.owner, x, o)} ${tile.isWinningTile ? 'winning-btn' : ''}`}
               type="button"
               id={tile.id.toString()}
               value={tile.owner}

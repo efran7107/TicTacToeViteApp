@@ -42,10 +42,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     if(lastThreeX.length > 1) {
       if (functions.validateWin([...lastThreeX, id].slice(-3))) {
-        setGameboard(updatedGameboard)
+        setGameboard(functions.setWinningTiles(updatedGameboard, [...lastThreeX, id].slice(-3)))
         setXWins(xWins + 1)
         setIsGameOver(true)
-        functions.setWinningBtns([...lastThreeX, id].slice(-3))
         return
       }
     }
@@ -66,9 +65,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     if(lastThreeO.length > 1) {
       if (functions.validateWin([...lastThreeO, cpuId].slice(-3))) {
+        setGameboard(
+          functions.setWinningTiles(
+            functions.changeGameboardArr(
+              updatedGameboard,
+              x,
+              o,
+              cpuId,
+              numTurns + 1,
+              eliminatedO
+        ), [...lastThreeO, cpuId].slice(-3)))
         setOWins(oWins + 1)
         setIsGameOver(true)
-        functions.setWinningBtns([...lastThreeO, cpuId].slice(-3))
         return
       }
     }
