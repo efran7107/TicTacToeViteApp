@@ -35,6 +35,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       eliminatedX
     );
 
+    if(lastThreeX.length > 1) {
+      if (functions.validateWin([...lastThreeX, id].slice(-3))) {
+        setGameboard(updatedGameboard)
+        return
+      }
+    }
+
     const cpuId = cpuChoice(updatedGameboard, numTurns + 1, x, o)!;
     setOTile(cpuId, numTurns, lastThreeO, setLastThreeO);
 
@@ -48,6 +55,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         eliminatedO
       )
     );
+
+    if(lastThreeO.length > 1) {
+      if (functions.validateWin([...lastThreeO, cpuId].slice(-3))) {
+        return
+      }
+    }
     setNumTurns(numTurns + 2);
   };
 
@@ -61,6 +74,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         gameboard,
         setGameboard,
         changeTile,
+        x,
+        o
       }}
     >
       {children}

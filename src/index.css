@@ -3,12 +3,13 @@
   font-family: var(--default-font);
 
   --background: #f1f1f1;
+  --font-color: #161616d8;
+  
   --x-font-color: #e6331e;
   --x-background-color: #2277e6;
   --o-font-color: #2277e6;
   --o-background-color: #e6331e;
 
-  --font-color: #161616d8;
   --win-background: #bfe61e;
 
   --font-size-10: 0.625rem;
@@ -33,14 +34,8 @@
 }
 
 .dark {
-  --background: #1f1f1f;
-  --x-font-color: #914b43;
-  --x-background-color: #405166;
-  --o-font-color: #405166;
-  --o-background-color: #914b43;
-
-  --font-color: #f3f3f3da;
-  --win-background: #5f6640;
+  --background: #161616;
+  --font-color: #f1f1f18a;
   transition: var(--default-transition);
 }
 
@@ -57,6 +52,7 @@ h1 {
 }
 
 input {
+  font-family: var(--default-font);
   font-size: var(--font-size-20);
   background-color: var(--background);
   color: var(--font-color);

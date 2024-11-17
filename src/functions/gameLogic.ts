@@ -36,41 +36,41 @@ const cpuChoice = (
   const availableTiles = updatedGameboard.filter((tile) => tile.owner === "");
 
   if (turns < 4) {
-    if (availableTiles.filter((tile) => tile.id === 4)) {
+    if (availableTiles.filter((tile) => tile.id === 4).length > 0) {
       return 4;
     }
     return availableTiles[Math.floor(Math.random() * availableTiles.length)].id;
   }
 
-  const winningXCombinations = functions.winningCombinations(updatedGameboard);
+  const winningXCombinations = functions.winningCombinations(updatedGameboard).filter(
+    (set) =>
+      set.filter((tile) => tile.owner === x).length === 2 &&
+      set.filter((tile) => tile.owner === o).length === 0
+  );
 
   if (
-    winningXCombinations.filter(
-      (set) =>
-        set.filter((tile) => tile.owner === x).length === 2 &&
-        set.filter((tile) => tile.owner === o).length === 0
-    ).length > 0
+    winningXCombinations.length > 0
   ) {
-    return winningXCombinations
-      .filter((set) => set.filter((tile) => tile.owner === x).length === 2)[0]
+    return winningXCombinations[0]
       .filter((tile) => tile.owner === "")[0].id;
   }
 
-  const winningOCombinations = functions.winningCombinations(updatedGameboard);
+  const winningOCombinations = functions.winningCombinations(updatedGameboard).filter(
+    (set) =>
+      set.filter((tile) => tile.owner === o).length === 2 &&
+      set.filter((tile) => tile.owner === x).length === 0
+  );
   if (
-    winningOCombinations.filter(
-      (set) =>
-        set.filter((tile) => tile.owner === o).length === 2 &&
-        set.filter((tile) => tile.owner === x).length === 0
-    ).length > 0
+    winningOCombinations.length > 0
   ) {
-    return winningXCombinations
-      .filter((set) => set.filter((tile) => tile.owner === o).length === 2)[0]
+    return winningXCombinations[0]
       .filter((tile) => tile.owner === "")[0].id;
   }
 
   return availableTiles[Math.floor(Math.random() * availableTiles.length)].id;
 };
+
+
 
 export const gameLogic = {
   setXTile,

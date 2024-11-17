@@ -1,8 +1,9 @@
+import { functions } from "../functions/functions";
 import { useUser } from "../functions/providerContext";
 import "../styles/gameboard.css";
 
 export const GameBoard = () => {
-  const { name, gameboard, changeTile } = useUser();
+  const { name, gameboard, changeTile, x ,o } = useUser();
   return (
     <div className="gameboard-container">
       <div className="names-container">
@@ -19,10 +20,12 @@ export const GameBoard = () => {
         {gameboard.map((tile) => {
           return (
             <input
+            className={functions.buttonClass(tile.owner, x, o)}
               type="button"
               value={tile.owner}
               key={tile.id}
               onClick={() => changeTile(tile.id)}
+              disabled={tile.owner !== ''}
             />
           );
         })}

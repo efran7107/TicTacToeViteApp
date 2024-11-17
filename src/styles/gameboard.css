@@ -28,3 +28,15 @@
   font-family: "Font Awesome 6 Free";
   font-weight: 600;
 }
+
+.gameboard .x-owner {
+  border-color: var(--x-font-color);
+  color: var(--x-font-color);
+  background-color: var(--x-background-color);
+}
+
+.gameboard .o-owner {
+  border-color: var(--o-font-color);
+  color: var(--o-font-color);
+  background-color: var(--o-background-color);
+}

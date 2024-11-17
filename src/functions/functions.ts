@@ -72,9 +72,19 @@ const winningCombinations = (gameboard: Array<gameTile>): Array<gameTile[]> => {
   ];
 };
 
+const buttonClass = (tileOwner: string, x: string, o: string): string => {
+  if(tileOwner === x){
+    return 'x-owner'
+  }else if(tileOwner === o){
+    return 'o-owner'
+  }
+  return ''
+}
+
 export const functions = {
   getGameBoard,
   changeGameboardArr,
   validateWin,
   winningCombinations,
+  buttonClass
 };

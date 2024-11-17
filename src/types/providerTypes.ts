@@ -8,4 +8,6 @@ export type TUserProvider = {
   gameboard: Array<gameTile>;
   setGameboard: (gameboard: Array<gameTile>) => void;
   changeTile: (id: number) => void;
+  x: string;
+  o: string;
 };
