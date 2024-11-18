@@ -1,9 +1,14 @@
 .name-entry-cont {
+  display: none;
+}
+
+.name-entry-cont.active {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
   gap: 20px;
+  animation: var(--default-animation);
 }
 
 .name-entry-cont button {

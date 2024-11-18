@@ -2,10 +2,10 @@ import { useUser } from "../functions/providerContext";
 import "../styles/nameEntry.css";
 
 export const NameEntry = () => {
-  const { name, setName, setDidEnterName } = useUser();
+  const { name, setName, setDidEnterName, didEnterName } = useUser();
   return (
     <form
-      className="name-entry-cont"
+      className={`name-entry-cont ${!didEnterName && "active"}`}
       onSubmit={(e) => {
         e.preventDefault();
         if (name.trim().length < 2) {

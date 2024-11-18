@@ -10,8 +10,10 @@ export type TUserProvider = {
   changeTile: (id: number) => void;
   x: string;
   o: string;
-  isGameOver: boolean,
-  xWins: number,
-  oWins: number,
-  restart: () => void 
+  isGameOver: boolean;
+  xWins: number;
+  oWins: number;
+  restart: () => void;
+  didUserWin: boolean;
+  exit: () => void;
 };

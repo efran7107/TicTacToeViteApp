@@ -1,9 +1,15 @@
 .gameboard-container {
+  display: none;
+  position: relative;
+}
+
+.gameboard-container.active {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  animation: var(--default-animation);
 }
 
 .names-container {
@@ -42,16 +48,16 @@
 }
 
 .gameboard .winning-btn {
-  background-color:var(--font-color);
-  color: var(--background);
-  border-color: var(--background)
+  background-color: var(--inverted-background);
+  color: var(--inverted-font-color);
+  border-color: var(--inverted-font-color);
 }
 
 .wins-container {
   display: flex;
-    width: 100%;
-    justify-content: space-between;
-    text-align: center;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .wins h5 {
@@ -59,7 +65,7 @@
   font-size: var(--font-size-22);
 }
 
-.wins h5 span{
+.wins h5 span {
   font-family: "Font Awesome 6 Free";
 }
 
@@ -67,8 +73,31 @@
   font-size: var(--font-size-18);
 }
 
-
 .restart input {
   font-weight: 600;
   font-family: "Font Awesome 6 Free";
+}
+
+.winner-modal {
+  display: none;
+  position: absolute;
+  top: 20%;
+}
+
+.winner-modal.active {
+  width: 200px;
+  background: var(--inverted-background);
+  padding: 40px;
+  border-radius: 20px;
+  color: var(--inverted-font-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: var(--default-animation);
+}
+
+.winner-modal h3 {
+  font-size: var(--font-size-24);
+  font-weight: 600;
 }
