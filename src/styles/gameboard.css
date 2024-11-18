@@ -90,6 +90,7 @@
   padding: 40px;
   border-radius: 20px;
   color: var(--inverted-font-color);
+  border: 3px solid var(--inverted-font-color);
   display: flex;
   flex-direction: column;
   align-items: center;
