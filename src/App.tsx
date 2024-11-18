@@ -10,8 +10,8 @@ function App() {
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <div className="header-container">
           <h1>Tic Tac Toe</h1>
-          <ThemeButton />
         </div>
+        <ThemeButton />
         <UserProvider>
           <TicTacToe />
         </UserProvider>

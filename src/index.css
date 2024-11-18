@@ -4,7 +4,10 @@
 
   --background: #f1f1f1;
   --font-color: #161616d8;
-  
+
+  --inverted-background: #161616;
+  --inverted-font-color: #f1f1f1d8;
+
   --x-font-color: #e6331e;
   --x-background-color: #2277e6;
   --o-font-color: #2277e6;
@@ -31,11 +34,15 @@
   --font-size-90: 5.5rem;
 
   --default-transition: all 0.2s ease-in-out;
+  --default-animation: active 0.5s ease-in;
 }
 
 .dark {
   --background: #161616;
-  --font-color: #f1f1f18a;
+  --font-color: #f1f1f1d8;
+
+  --inverted-background: #f1f1f1;
+  --inverted-font-color: #161616d8;
   transition: var(--default-transition);
 }
 
@@ -47,7 +54,9 @@ body {
   transition: var(--default-transition);
 }
 
-h1 {
+h1,
+.wins h5,
+h3 {
   margin: 0;
 }
 
@@ -71,4 +80,21 @@ input::placeholder {
 
 label {
   font-size: var(--font-size-16);
+}
+
+.container {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@keyframes active {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }

@@ -6,6 +6,7 @@ const getGameBoard = (): Array<gameTile> => {
     tiles.push({
       id: i,
       owner: "",
+      isWinningTile: false,
     });
   }
   return tiles;
@@ -81,10 +82,22 @@ const buttonClass = (tileOwner: string, x: string, o: string): string => {
   return ''
 }
 
+const setWinningTiles = (gameboard: gameTile[], winningTiles: number[]): gameTile[] => {
+  return gameboard.map((tile) => {
+    if (winningTiles.includes(tile.id)) {
+      return { ...tile, isWinningTile: true };
+    } else {
+      return tile;
+    }
+  });
+};
+
+
 export const functions = {
   getGameBoard,
   changeGameboardArr,
   validateWin,
   winningCombinations,
-  buttonClass
+  buttonClass,
+  setWinningTiles
 };

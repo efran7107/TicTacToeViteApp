@@ -11,6 +11,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [lastThreeX, setLastThreeX] = useState<number[]>([]);
   const [numTurns, setNumTurns] = useState(2);
 
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [didUserWin, setDidUserWin] = useState(false);
+
+  const [xWins, setXWins] = useState(0);
+  const [oWins, setOWins] = useState(0);
+
   const { setXTile, setOTile, cpuChoice } = gameLogic;
 
   const x = "\uf00d";
@@ -35,10 +41,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       eliminatedX
     );
 
-    if(lastThreeX.length > 1) {
+    if (lastThreeX.length > 1) {
       if (functions.validateWin([...lastThreeX, id].slice(-3))) {
-        setGameboard(updatedGameboard)
-        return
+        setGameboard(
+          functions.setWinningTiles(
+            updatedGameboard,
+            [...lastThreeX, id].slice(-3)
+          )
+        );
+        setXWins(xWins + 1);
+        setIsGameOver(true);
+        setDidUserWin(true);
+        return;
       }
     }
 
@@ -56,12 +70,44 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       )
     );
 
-    if(lastThreeO.length > 1) {
+    if (lastThreeO.length > 1) {
       if (functions.validateWin([...lastThreeO, cpuId].slice(-3))) {
-        return
+        setGameboard(
+          functions.setWinningTiles(
+            functions.changeGameboardArr(
+              updatedGameboard,
+              x,
+              o,
+              cpuId,
+              numTurns + 1,
+              eliminatedO
+            ),
+            [...lastThreeO, cpuId].slice(-3)
+          )
+        );
+        setOWins(oWins + 1);
+        setIsGameOver(true);
+        return;
       }
     }
     setNumTurns(numTurns + 2);
+  };
+
+  const restart = () => {
+    setGameboard(functions.getGameBoard());
+    setLastThreeX([]);
+    setLastThreeO([]);
+    setNumTurns(2);
+    setIsGameOver(false);
+    setDidUserWin(false);
+  };
+
+  const exit = () => {
+    restart();
+    setName("");
+    setDidEnterName(false);
+    setXWins(0);
+    setOWins(0);
   };
 
   return (
@@ -75,7 +121,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setGameboard,
         changeTile,
         x,
-        o
+        o,
+        isGameOver,
+        xWins,
+        oWins,
+        restart,
+        didUserWin,
+        exit,
       }}
     >
       {children}
